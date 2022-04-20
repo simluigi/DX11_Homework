@@ -13,6 +13,7 @@
 
 #include "window.h"
 #include "device.h"
+#include "swapChain.h"
 
 // forward declaration for use of WndProc within WinMain
 LRESULT CALLBACK WndProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam);
@@ -24,7 +25,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance, _I
 	UNREFERENCED_PARAMETER(pCmdLine);
 
 	CWindow window;
-
 	if (window.CreateApplicationWindow(WndProc, hInstance, cmdShow) != 0)
 	{
 		MessageBox(nullptr, "Failed to create application window!", "Error", MB_OK);
@@ -32,14 +32,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance, _I
 	}
 
 	CDevice device;
-
 	if (!device.CreateDevice())
 	{
 		MessageBox(nullptr, "Failed to create device!", "Error", MB_OK);
 		return -1;
 	}
 
-	return 0;
+
+	//CSwapChain swapChain;
+	//if (!swapChain.CreateSwapChain(window.GetWindowHandle(), device.GetDevice(), )
+
+	//return 0;
 }
 
 

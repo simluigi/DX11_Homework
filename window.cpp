@@ -19,7 +19,7 @@ CWindow::~CWindow()
 
 }
 
-int CWindow::CreateApplicationWindow(WNDPROC wndProc, HINSTANCE hInstance, int cmdShow)
+int CWindow::CreateApplicationWindow(WNDPROC wndProc, HINSTANCE hInstance, int cmdShow, int width, int height)
 {
 	WNDCLASSEXA wcex{};
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -45,8 +45,8 @@ int CWindow::CreateApplicationWindow(WNDPROC wndProc, HINSTANCE hInstance, int c
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 
 		CW_USEDEFAULT, 
-		m_width,
-		m_height,
+		width,
+		height,
 		0, 
 		0,
 		hInstance, 

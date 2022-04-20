@@ -17,12 +17,10 @@ public:
 	CWindow();
 	~CWindow();
 
-	int		CreateApplicationWindow(WNDPROC wndProc, HINSTANCE hInstance, int cmdShow);
+	int		CreateApplicationWindow(WNDPROC wndProc, HINSTANCE hInstance, int cmdShow, int width, int height);
 	HWND	GetWindowHandle();
 
 private:
 		
 	HWND	m_hWnd;
-	int		m_width = 1280;
-	int		m_height = 720;
 };

@@ -25,7 +25,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance, _I
 	UNREFERENCED_PARAMETER(pCmdLine);
 
 	CWindow window;
-	if (window.CreateApplicationWindow(WndProc, hInstance, cmdShow) != 0)
+	if (window.CreateApplicationWindow(WndProc, hInstance, cmdShow, width, height) != 0)
 	{
 		MessageBox(nullptr, "Failed to create application window!", "Error", MB_OK);
 		return -1;
@@ -40,9 +40,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance, _I
 
 
 	//CSwapChain swapChain;
-	//if (!swapChain.CreateSwapChain(window.GetWindowHandle(), device.GetDevice(), )
+	//if (!swapChain.CreateSwapChain(window.GetWindowHandle(), device.GetDevice(), width, height))
+	//{
+	//	MessageBox(nullptr, "Failed to create swap chain!", "Error", MB_OK);
+	//		return -1;
+	//}
 
-	//return 0;
+	return 0;
 }
 
 

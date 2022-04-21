@@ -23,7 +23,9 @@ public:
 	CSwapChain();
 	~CSwapChain();
 
-	bool CreateSwapChain(HWND hWnd, IUnknown* device, int width, int height);
+	bool CreateSwapChain(HWND hWnd, Microsoft::WRL::ComPtr<ID3D11Device2> device, int width, int height);
+	bool QueryDXGIFactory(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+	Microsoft::WRL::ComPtr<IDXGISwapChain2> GetSwapChain();
 
 private:
 

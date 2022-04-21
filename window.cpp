@@ -61,23 +61,6 @@ int CWindow::CreateApplicationWindow(WNDPROC wndProc, HINSTANCE hInstance, int c
 	ShowWindow(m_hWnd, cmdShow);
 	UpdateWindow(m_hWnd);
 
-	// message loop
-	MSG	 msg;
-	BOOL bRet;
-	
-	while ((bRet = GetMessageA(&msg, m_hWnd, 0, 0)) != 0)  // returns 0 on WM_QUIT, returns -1 on error
-	{
-		if (bRet == -1)
-		{
-			// error handling here
-			return -1;
-		}
-		else
-		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
-	}
 	return 0;
 }
 

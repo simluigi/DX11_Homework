@@ -16,6 +16,7 @@
 
 #pragma comment (lib, "d3d11.lib")
 #pragma comment (lib, "dxgi.lib")
+#pragma comment (lib, "d3dcompiler.lib")
 
 struct VertexPos
 {
@@ -35,14 +36,23 @@ public:
 	bool CreateDepthStencilState(Microsoft::WRL::ComPtr<ID3D11Device2> device);
 	bool CreateRasterizerState(Microsoft::WRL::ComPtr<ID3D11Device2> device);
 
-	//bool CreateVertexBuffer(Microsoft::WRL::ComPtr<ID3D11Device2> device);
-	//bool CreateIndexBuffer(Microsoft::WRL::ComPtr<ID3D11Device2> device);
-	//bool CreateInputLayout(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+	bool CreateVertexBuffer(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+	bool CreateIndexBuffer(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+
+	bool CreateVertexShader(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+	bool CreatePixelShader(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+	bool CreateInputLayout(Microsoft::WRL::ComPtr<ID3D11Device2> device);
+
+	void Clear(Microsoft::WRL::ComPtr<ID3D11DeviceContext2> deviceContext);
+
+	void Draw(Microsoft::WRL::ComPtr<ID3D11DeviceContext2> deviceContext, Microsoft::WRL::ComPtr<IDXGISwapChain2> swapChain);
 	
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	GetRenderTargetView();
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	GetDepthStencilView();
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState>	GetDepthStencilState();
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState>	GetRasterizerState();
+
+	Microsoft::WRL::ComPtr<ID3D11InputLayout>		GetInputLayout();
 
 private:
 
@@ -55,7 +65,9 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11Buffer>			m_pVertexBuffer;
 	Microsoft::WRL::ComPtr<ID3D11Buffer>			m_pIndexBuffer;
 
+	Microsoft::WRL::ComPtr<ID3DBlob>				m_pVertexShaderBlob;
 	Microsoft::WRL::ComPtr<ID3D11VertexShader>		m_pVertexShader;
+	Microsoft::WRL::ComPtr<ID3DBlob>				m_pPixelShaderBlob;
 	Microsoft::WRL::ComPtr<ID3D11PixelShader>		m_pPixelShader;
 
 

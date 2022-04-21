@@ -74,6 +74,36 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance, _I
 		return -1;
 	}
 
+	if (!renderer.CreateVertexBuffer(device.GetDevice()))
+	{
+		MessageBox(nullptr, TEXT("Failed to create vertex buffer!"), TEXT("Error"), MB_OK);
+		return -1;
+	}
+
+	if (!renderer.CreateIndexBuffer(device.GetDevice()))
+	{
+		MessageBox(nullptr, TEXT("Failed to create index buffer!"), TEXT("Error"), MB_OK);
+		return -1;
+	}
+
+	if (!renderer.CreateVertexShader(device.GetDevice()))
+	{
+		MessageBox(nullptr, TEXT("Failed to create vertex shader!"), TEXT("Error"), MB_OK);
+		return -1;
+	}
+
+	if (!renderer.CreatePixelShader(device.GetDevice()))
+	{
+		MessageBox(nullptr, TEXT("Failed to create pixel shader!"), TEXT("Error"), MB_OK);
+		return -1;
+	}
+
+	if (!renderer.CreateInputLayout(device.GetDevice()))
+	{
+		MessageBox(nullptr, TEXT("Failed to create input layout!"), TEXT("Error"), MB_OK);
+		return -1;
+	}
+
 	// message loop
 	MSG	 msg;
 	BOOL bRet;
@@ -89,6 +119,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance, _I
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
+
+			//renderer.Draw(device.GetDeviceContext(), swapChain.GetSwapChain());
 		}
 	}
 
